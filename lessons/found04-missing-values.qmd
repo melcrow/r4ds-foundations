@@ -1,0 +1,279 @@
+---
+title: "Lesson 4: Understanding Missing Values"
+subtitle: "What does it mean when data are missing?"
+---
+
+```{r}
+#| include: false
+source("../data/lock5-usstates.R")
+```
+
+## Learning Objectives
+
+By the end of this lesson, you should be able to:
+
+- Explain why `NA` means **unknown**, not zero or blank.
+- Predict how missing values affect arithmetic and summary statistics.
+- Identify missing values using `is.na()`.
+- Count the number and proportion of missing values.
+- Remove missing values when appropriate using logical indexing.
+
+[Download the companion R guide for this lesson](found04-missing-values-companion.R)
+
+---
+
+## Introduction
+
+Real datasets are rarely complete. Sometimes a value is missing because it was never collected, a participant skipped a question, or the information could not be determined.
+
+In R, missing values are represented by **`NA`**, which stands for **Not Available**.
+
+The important idea is that **`NA` means "unknown."** It does **not** mean zero or an empty value.
+
+---
+
+## Arithmetic with Missing Values
+
+Suppose we have a vector of quiz scores for a small class, but one student was absent that day. 
+
+The student's grade is not 0; it is missing. They simply haven't made up the quiz yet, so we don't know what their grade will be yet.
+
+```{r}
+quiz_scores <- c(8, 10, NA, 7, 9)
+
+quiz_scores
+
+NA + 5
+mean(quiz_scores)
+```
+
+::: {.callout-note title="Key Idea"}
+Missing values propagate uncertainty.
+
+If part of a calculation is unknown, the result is usually unknown.
+:::
+
+---
+
+
+## Finding Missing Values
+
+Let's return to the US States data. Recall that the `fruits` vector measures the percentage of people in each state who eat fruit at least once per day. 
+
+But did every state actually record this data? Or did some states not report their fruit-eating habits? 
+
+```{r}
+fruit # hard to read
+length(fruit) # not helpful
+
+# check for missing data directly:
+is.na(fruit)
+```
+
+::: {.callout-note title="Key Idea"}
+`is.na()` creates a logical vector.
+
+`TRUE` means the value is missing.
+
+`FALSE` means the value is present.
+:::
+
+---
+
+## Counting Missing Values
+
+Once we have a logical vector telling us which values are missing (TRUE) or not missing (FALSE), we can work with it the same way we worked with logical vectors in the last section. 
+
+One of the most common tasks is to count the number of missing (or non-missing) values. This is a great diagnostic to run on any variable. 
+
+```{r}
+# How many states are missing the fruit data? 
+sum(is.na(fruit))
+
+```
+
+
+The `physical` variable measures the percent of people in each state who report doing 150+ minutes of aerobic physical activity per week.
+
+Can you adapt the earlier code to count the number of states that did not report their physical activity data? 
+
+```{r}
+# How many states are missing the physical activity data? 
+#
+```
+
+Counting the number of observations that are missing is a good start, but in some datasets, it's more helpful to find the proportion of data that is missing. Is 10% missing? or 40% missing? 
+This can make a big difference for whether we are able to use the variable at all. 
+
+Think about how we calculate proportions: PART / WHOLE. In other words:
+
+$$\frac{\text{Number of states with missing data}}{\text{Total number of states}}$$
+Can we use R functions we've already learned to calculate each of these pieces? 
+
+Yes!
+
+
+```{r}
+
+# Number of states with missing physical data:
+sum(is.na(physical))
+
+# Total number of states in the dataset: 
+length(physical)
+
+# What proportion of states are missing the physical activity data?
+sum(is.na(physical)) / length(physical)
+mean(is.na(physical))
+```
+
+**Shortcut:** remember that R records TRUE as 1 and FALSE as 0. Because of this, we can actually use the mean() function to find the proportion of missing data. Weird, but true! 
+
+$$
+\begin{aligned}
+\text{mean(is.na(physical))}
+    &= \frac{\text{FALSE} + \text{FALSE} + \cdots + \text{TRUE}+ \cdots + \text{FALSE}}{\text{total number of states}} \\[0.8em]
+    &= \frac{0 + 0 + \cdots + 1+\cdots+0}{\text{total number of states}} \\[0.8em]
+    &= \frac{\text{number of missing values}}{\text{total number of states}} \\[0.8em]
+    &= \text{proportion of missing values}
+\end{aligned}
+$$
+
+**Pro-tip:** Using `mean(is.na(x))` to find the proportion of missing values is a common shortcut among data scientists/statisticians who are too lazy to write out the full calculation. But if you aren't comfortable with why it works, there's no harm in actually writing out `sum(is.na(x)) / length(x)`. Do what makes sense to you. 
+
+---
+
+## Selecting Non-Missing Observations
+Sometimes we want to ignore the missing values and work only with the observations that contain data.
+
+To do that, we first need a logical vector that identifies the observed values rather than the missing ones.
+
+The ! operator means NOT. It reverses each logical value:
+
+- TRUE becomes FALSE
+- FALSE becomes TRUE
+
+So if `is.na(fruit)` asks "Is this value missing?"
+
+then `!is.na(fruit)` asks "Is this value *not* missing?"
+
+```{r}
+is.na(fruit)
+!is.na(fruit)
+```
+
+Now we have a logical vector with TRUE wherever the data are available.
+
+Just as in the previous lesson, we can use that logical vector inside square brackets ([]) to select the observations we want to keep.
+
+```{r}
+fruit_noNA <- fruit[!is.na(fruit)]
+fruit_noNA
+```
+
+Notice that fruit_noNA contains fewer values than the original fruit vector because the missing observation has been removed.
+
+```{r}
+length(fruit)
+length(fruit_noNA)
+```
+
+In general, be cautious about just removing NA values-- this can end up backfiring, badly. It's much better to investigate cases with missing data and try to discover why the data is missing. Sometimes you can even *impute* (or guess/estimate) missing values.
+
+In practice, we don't often need to manually remove values from a vector, because R has smart options for handling missing data inside calculations (more on that next!). 
+
+If you do decide to manually remove the missing data (only after clearing it with your advisor/boss/professor), then make sure you remove the same cases from any other affected vectors, such as the vector of state names, or the data will no longer match up. 
+
+```{r}
+states_noNA <- states[!is.na(fruit)]
+
+head(states_noNA, 10)
+
+length(states_noNA)
+length(fruit_noNA)
+```
+
+
+
+::: {.callout-note title="Key Idea"}
+When you remove observations from one vector, you should usually remove the same observations from every related vector so they continue to describe the same observations.
+:::
+
+---
+
+## Comparing Summary Statistics
+
+If you try to compute functions or summary statistics on a vector with missing data, R will always report NA as the answer. 
+
+```{r}
+mean(fruit)
+mean(quiz_scores)
+```
+
+That's because, since at least one value is missing, we don't actually know the true mean of the data set.
+
+R forces us to acknowledge this and make a conscious choice about how to handle the missing data. 
+
+If you decide you want to compute the average for the data that is present, then you can. 
+
+```{r}
+mean(fruit_noNA)
+mean(fruit[!is.na(fruit)])
+```
+
+This is a little clunky, and thankfully R has a streamlined option. If you know you have missing data and you want R to remove the missing data and calculate the summary statistic ignoring it, you can: 
+
+```{r}
+mean(fruit, na.rm = TRUE)
+max(fruit, na.rm = TRUE)
+sd(fruit, na.rm = TRUE)
+# etc.
+```
+
+In this case, `na.rm = TRUE` tells R to set the "remove NA values" option to TRUE. In other words, remove the NA values before calculating the mean. 
+
+Using `na.rm = TRUE` doesn't change the original fruit vector; it only affects the calculation itself.  
+
+---
+
+## Try It
+
+Open the companion R script and investigate the `physical` vector.
+
+1. Which values are missing?
+2. How many states are missing physical activity data?
+3. What proportion of states are missing physical activity data?
+4. Which states are missing physical activity data?
+5. What is the mean physical activity value after removing missing values?
+
+---
+
+## Looking Ahead
+
+Missing values are common in real datasets.
+
+Before beginning an analysis, it is good practice to check whether data are missing and think carefully about how those missing values should be handled.
+
+Later in the course, we'll see how these same ideas apply to entire data frames.
+
+---
+
+## Lesson Summary
+
+- `NA` represents an unknown value.
+- Missing values usually cause calculations to return `NA`.
+- `is.na()` identifies missing values.
+- Missing values can be counted with `sum()` or `mean()`.
+- Logical indexing with `!is.na()` keeps observed values.
+- Related vectors should be filtered together.
+
+---
+
+## R Reference
+
+| Function / Syntax | Purpose |
+|-------------------|---------|
+| `is.na(x)` | Identify missing values |
+| `!is.na(x)` | Identify non-missing values |
+| `sum(is.na(x))` | Count missing values |
+| `mean(is.na(x))` | Proportion of missing values |
+| `mean(x, na.rm = TRUE)` | Ignore missing values when calculating the mean |

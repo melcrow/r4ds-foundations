@@ -1,0 +1,635 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "R Foundations",
+    "section": "",
+    "text": "Welcome!\nThis site contains the pre-class lessons for the R Foundations module in our R for Data Science course.\nThese lessons are designed to help you learn the basic ideas of R before class so that our class meetings can focus on solving problems with data rather than introducing new syntax.\nEach lesson should take about 10–20 minutes to complete (hopefully).\n\n\nFor each lesson:\n\nRead the explanations.\nPredict what each code example will do before running it.\nRun the code in RStudio.\nCompare your prediction with the output.\nComplete your guided notes and Canvas quiz before class.\n\nProgramming is learned by experimenting. Don’t worry if your first prediction is wrong—that is part of the learning process.\n\n\n\n\n\n01 Variables as Vectors\n02 Creating Useful Vectors\n03 Selecting Observations\n04 Understanding Missing Values\n05 Summarizing a Variable",
+    "crumbs": [
+      "Home"
+    ]
+  },
+  {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About this site\n\n1 + 1\n\n[1] 2"
+  },
+  {
+    "objectID": "index.html#core-skills-for-data-science",
+    "href": "index.html#core-skills-for-data-science",
+    "title": "R Foundations",
+    "section": "",
+    "text": "Welcome!\nThis site contains the pre-class lessons for the R Foundations module in our R for Data Science course.\nThese lessons are designed to help you learn the basic ideas of R before class so that our class meetings can focus on solving problems with data rather than introducing new syntax.\nEach lesson should take about 10–20 minutes to complete (hopefully).\n\n\nFor each lesson:\n\nRead the explanations.\nPredict what each code example will do before running it.\nRun the code in RStudio.\nCompare your prediction with the output.\nComplete your guided notes and Canvas quiz before class.\n\nProgramming is learned by experimenting. Don’t worry if your first prediction is wrong—that is part of the learning process.\n\n\n\n\n\n01 Variables as Vectors\n02 Creating Useful Vectors\n03 Selecting Observations\n04 Understanding Missing Values\n05 Summarizing a Variable",
+    "crumbs": [
+      "Home"
+    ]
+  },
+  {
+    "objectID": "lessons/found01-vectors.html",
+    "href": "lessons/found01-vectors.html",
+    "title": "01 Variables as Vectors",
+    "section": "",
+    "text": "After completing this lesson, you should be able to:\n\nExplain that a variable is stored as a vector in R.\nDistinguish between quantitative and categorical vectors.\nExplain that multiple vectors together describe the same set of observations.\nPreview how vectors form the foundation of a data frame.\n\nDownload the companion R guide for this lesson",
+    "crumbs": [
+      "Foundations",
+      "01 Variables as Vectors"
+    ]
+  },
+  {
+    "objectID": "lessons/found01-vectors.html#learning-objectives",
+    "href": "lessons/found01-vectors.html#learning-objectives",
+    "title": "01 Variables as Vectors",
+    "section": "",
+    "text": "After completing this lesson, you should be able to:\n\nExplain that a variable is stored as a vector in R.\nDistinguish between quantitative and categorical vectors.\nExplain that multiple vectors together describe the same set of observations.\nPreview how vectors form the foundation of a data frame.\n\nDownload the companion R guide for this lesson",
+    "crumbs": [
+      "Foundations",
+      "01 Variables as Vectors"
+    ]
+  },
+  {
+    "objectID": "lessons/found02-create-vectors.html",
+    "href": "lessons/found02-create-vectors.html",
+    "title": "Lesson 2: Creating Vectors",
+    "section": "",
+    "text": "In the previous lesson, you learned that a vector is one of the most important data structures in R. A vector stores multiple values of the same type in a single object.\nNow we’ll learn several easy ways to create vectors. Each method is useful in a different situation.\nBy the end of this lesson, you’ll be able to:\n\ncreate vectors by typing values\ncreate sequences of numbers\nrepeat values\ncombine pieces of text into labels\n\nDownload the companion R guide for this lesson",
+    "crumbs": [
+      "Foundations",
+      "02 Creating Useful Vectors"
+    ]
+  },
+  {
+    "objectID": "lessons/found02-create-vectors.html#introduction",
+    "href": "lessons/found02-create-vectors.html#introduction",
+    "title": "Lesson 2: Creating Vectors",
+    "section": "",
+    "text": "In the previous lesson, you learned that a vector is one of the most important data structures in R. A vector stores multiple values of the same type in a single object.\nNow we’ll learn several easy ways to create vectors. Each method is useful in a different situation.\nBy the end of this lesson, you’ll be able to:\n\ncreate vectors by typing values\ncreate sequences of numbers\nrepeat values\ncombine pieces of text into labels\n\nDownload the companion R guide for this lesson",
+    "crumbs": [
+      "Foundations",
+      "02 Creating Useful Vectors"
+    ]
+  },
+  {
+    "objectID": "lessons/found02-create-vectors.html#creating-a-vector-with-c",
+    "href": "lessons/found02-create-vectors.html#creating-a-vector-with-c",
+    "title": "Lesson 2: Creating Vectors",
+    "section": "Creating a vector with c()",
+    "text": "Creating a vector with c()\nThe simplest way to create a vector is with the combine function, c().\n\nse_states &lt;- c(\"Florida\", \"Georgia\", \"Alabama\")\n\nThis creates a character vector containing three state names.\nYou can also create vectors of numbers.\n\nse_populations &lt;- c(21.93, 10.82, 5.05)\n\n\n\n\n\n\n\nTipKey Idea\n\n\n\nc() simply combines multiple values into a single vector. Notice that every element must be the same data type– if you try to combine different data types, you can get unexpected results!",
+    "crumbs": [
+      "Foundations",
+      "02 Creating Useful Vectors"
+    ]
+  },
+  {
+    "objectID": "lessons/found02-create-vectors.html#creating-sequences",
+    "href": "lessons/found02-create-vectors.html#creating-sequences",
+    "title": "Lesson 2: Creating Vectors",
+    "section": "Creating sequences",
+    "text": "Creating sequences\nTyping every number is fine for short vectors.\n\nstate_nums &lt;- c(1, 2, 3, 4, 5)\nstate_nums\n\n[1] 1 2 3 4 5\n\n\nBut R has easier ways to create sequences.\nThe colon operator creates consecutive integers.\n\nstate_nums &lt;- 1:5\nstate_nums\n\n[1] 1 2 3 4 5\n\n\nYou can also count backwards.\n\n10:1\n\n [1] 10  9  8  7  6  5  4  3  2  1\n\n\nIf you need more control, use seq().\n\nseq(from = 0, to = 20, by = 5)\n\n[1]  0  5 10 15 20\n\n\nUnlike :, seq() lets you choose the starting value, ending value, and spacing.\n\n\n\n\n\n\nTipKey Idea\n\n\n\nUse : for simple consecutive integers.\nUse seq() whenever you need more flexibility.",
+    "crumbs": [
+      "Foundations",
+      "02 Creating Useful Vectors"
+    ]
+  },
+  {
+    "objectID": "lessons/found02-create-vectors.html#repeating-values",
+    "href": "lessons/found02-create-vectors.html#repeating-values",
+    "title": "Lesson 2: Creating Vectors",
+    "section": "Repeating values",
+    "text": "Repeating values\nSometimes you need the same value several times. But if you are lazy like me, you don’t want to have to keep typing it (plus the more times you type something, the more likely you are to make a typo!)\nFor example, suppose several states all belong to the same region.\n\n# Oops! Spot the typo...\nse_regions &lt;- c(\"S\", \"S\", \"s\")\nse_regions\n\n[1] \"S\" \"S\" \"s\"\n\n\nIt would be easier if we could have R repeat the region for us.\n\nse_regions &lt;- rep(\"S\", times = 3)\nse_regions\n\n[1] \"S\" \"S\" \"S\"\n\n\nYou can also repeat an entire pattern.\n\nrep(c(\"A\", \"B\"), times = 3)\n\n[1] \"A\" \"B\" \"A\" \"B\" \"A\" \"B\"\n\n\nThe rep() function is flexible with more options that you can explore in the companion code script.\n\nWithout running the code, what do you think this produces?\n\nrep(c(\"orange\", \"blue\"), each = 2, times = 3)\n\n [1] \"orange\" \"orange\" \"blue\"   \"blue\"   \"orange\" \"orange\" \"blue\"   \"blue\"  \n [9] \"orange\" \"orange\" \"blue\"   \"blue\"",
+    "crumbs": [
+      "Foundations",
+      "02 Creating Useful Vectors"
+    ]
+  },
+  {
+    "objectID": "lessons/found02-create-vectors.html#building-labels-with-paste",
+    "href": "lessons/found02-create-vectors.html#building-labels-with-paste",
+    "title": "Lesson 2: Creating Vectors",
+    "section": "Building labels with paste()",
+    "text": "Building labels with paste()\nOften we want to combine existing values into readable labels.\nSuppose we already have a vector of numbers.\n\nstate_nums &lt;- 1:5\n\nWe can create labels using paste().\n\npaste(\"State\", state_nums)\n\n[1] \"State 1\" \"State 2\" \"State 3\" \"State 4\" \"State 5\"\n\n\nWe can also combine multiple vectors.\n\nstates &lt;- c(\"Florida\", \"Georgia\", \"Alabama\")\nregions &lt;- rep(\"South\", times = 3)\n\npaste(states, \"-\", regions)\n\n[1] \"Florida - South\" \"Georgia - South\" \"Alabama - South\"\n\n\n\n\n\n\n\n\nTipKey Idea\n\n\n\npaste() builds new text by combining existing pieces together.",
+    "crumbs": [
+      "Foundations",
+      "02 Creating Useful Vectors"
+    ]
+  },
+  {
+    "objectID": "lessons/found02-create-vectors.html#try-it",
+    "href": "lessons/found02-create-vectors.html#try-it",
+    "title": "Lesson 2: Creating Vectors",
+    "section": "Try It",
+    "text": "Try It\nOpen the companion R script and work through today’s examples.\nAs you work, don’t just run the code—try to predict what each line will produce before you execute it.\nIn the final section, you’ll investigate several examples that combine these functions in new ways.",
+    "crumbs": [
+      "Foundations",
+      "02 Creating Useful Vectors"
+    ]
+  },
+  {
+    "objectID": "lessons/found02-create-vectors.html#looking-ahead",
+    "href": "lessons/found02-create-vectors.html#looking-ahead",
+    "title": "Lesson 2: Creating Vectors",
+    "section": "Looking Ahead",
+    "text": "Looking Ahead\nToday we created vectors by hand.\nSoon you’ll begin importing datasets into R. Every column in a dataset is stored as a vector, so the tools you learned today will continue to be useful throughout the course.",
+    "crumbs": [
+      "Foundations",
+      "02 Creating Useful Vectors"
+    ]
+  },
+  {
+    "objectID": "lessons/found02-create-vectors.html#lesson-summary",
+    "href": "lessons/found02-create-vectors.html#lesson-summary",
+    "title": "Lesson 2: Creating Vectors",
+    "section": "Lesson Summary",
+    "text": "Lesson Summary\nToday you learned five common ways to build vectors.\n\n\n\nIf you want to…\nUse…\n\n\n\n\nCombine several values\nc()\n\n\nCreate consecutive integers\n:\n\n\nCreate flexible sequences\nseq()\n\n\nRepeat values or patterns\nrep()\n\n\nBuild text labels\npaste()",
+    "crumbs": [
+      "Foundations",
+      "02 Creating Useful Vectors"
+    ]
+  },
+  {
+    "objectID": "lessons/found02-create-vectors.html#r-reference",
+    "href": "lessons/found02-create-vectors.html#r-reference",
+    "title": "Lesson 2: Creating Vectors",
+    "section": "R Reference",
+    "text": "R Reference\n\n\n\nFunction\nPurpose\n\n\n\n\nc()\nCombine values into a vector\n\n\n:\nCreate consecutive integers\n\n\nseq()\nCreate a sequence with flexible spacing\n\n\nrep()\nRepeat values or patterns\n\n\npaste()\nCombine text and other values into labels",
+    "crumbs": [
+      "Foundations",
+      "02 Creating Useful Vectors"
+    ]
+  },
+  {
+    "objectID": "DESIGN.html",
+    "href": "DESIGN.html",
+    "title": "R Foundations – Design Notes",
+    "section": "",
+    "text": "R Foundations is a series of short pre-class lessons for an undergraduate R for Data Science course.\nStudents complete each lesson before class.\nEach lesson consists of:\n\nQuarto lesson\nCompanion R script (later some may become R Markdown or Quarto)\nCanvas Check-In\nIn-class activities\n\nLessons are designed to take approximately 15–20 minutes."
+  },
+  {
+    "objectID": "DESIGN.html#project-overview",
+    "href": "DESIGN.html#project-overview",
+    "title": "R Foundations – Design Notes",
+    "section": "",
+    "text": "R Foundations is a series of short pre-class lessons for an undergraduate R for Data Science course.\nStudents complete each lesson before class.\nEach lesson consists of:\n\nQuarto lesson\nCompanion R script (later some may become R Markdown or Quarto)\nCanvas Check-In\nIn-class activities\n\nLessons are designed to take approximately 15–20 minutes."
+  },
+  {
+    "objectID": "STATUS.html",
+    "href": "STATUS.html",
+    "title": "Current Status",
+    "section": "",
+    "text": "Last Updated: August 2026\n\n\n\nQuarto website created\nSandstone theme customized\nFooter completed\nCSS mostly complete\nLesson 1 complete\nLesson 1 companion complete\nLesson 1 Canvas check-in complete\n\n\n\n\n\n\n\nLesson 2\n\n\n\n\n\nCompanion for Lesson 2\nCanvas check-in for Lesson 2\n\n\n\n\n\nRedesign callout icons\nConvert callouts to custom classes\nPolish CSS\n\n\n\n\n\n\n\nWhether to use SCSS later\nFinal callout icon set\n\n\n\n\n\nLesson 2\nObjectives\n\nCreating vectors with c()\nColon operator\nseq()\nrep()\npaste()\n\nKeep the lesson under 20 minutes– we can cover topics in more depth during class. This should just be an intro. Continue using USStates examples when appropriate. Avoid introducing unnecessary programming terminology.\nGoal is to finish lesson 2 + companion + canvas check in in approx 30 minutes of work.\n\n\n\nOverall site styling is complete and satisfactory.\nCompleted\n\nSandstone theme\nTypography\nNavigation\nSidebar\nFooter\nColors\nTOC\nCode blocks\nOverall page layout\n\nRemaining\n\n\nCurrent Quarto callouts are functional but not ideal.\n\n\n\nKey Idea uses an exclamation icon that feels like a warning.\nLooking Ahead currently shares styling with other callouts.\nWe would like custom icons and colors rather than Quarto defaults.\n\n\n\n\nKey Idea - soft yellow - star icon (or similar non-warning icon)\nPredict - light blue - question icon\nTry It - light green - play icon\nCommon Mistake - light amber - warning triangle\nLooking Ahead - light lavender - forward arrow\n\n\n\nAttempting to override Quarto callouts with CSS produced inconsistent results (headers, bodies, and borders no longer matched).\n\n\n\nRather than continuing to patch CSS, investigate the Quarto-supported approach for customizing callouts (possibly SCSS or custom callout classes).\nUntil then, keep the existing Quarto callouts.\n\n\n\nDecide whether to (a) Customize Quarto callout theme properly (preferred) OR (b) Create completely custom callout classes"
+  },
+  {
+    "objectID": "STATUS.html#completed",
+    "href": "STATUS.html#completed",
+    "title": "Current Status",
+    "section": "",
+    "text": "Quarto website created\nSandstone theme customized\nFooter completed\nCSS mostly complete\nLesson 1 complete\nLesson 1 companion complete\nLesson 1 Canvas check-in complete"
+  },
+  {
+    "objectID": "STATUS.html#remaining-todos",
+    "href": "STATUS.html#remaining-todos",
+    "title": "Current Status",
+    "section": "",
+    "text": "Lesson 2\n\n\n\n\n\nCompanion for Lesson 2\nCanvas check-in for Lesson 2\n\n\n\n\n\nRedesign callout icons\nConvert callouts to custom classes\nPolish CSS"
+  },
+  {
+    "objectID": "STATUS.html#open-questions",
+    "href": "STATUS.html#open-questions",
+    "title": "Current Status",
+    "section": "",
+    "text": "Whether to use SCSS later\nFinal callout icon set"
+  },
+  {
+    "objectID": "STATUS.html#next-lesson",
+    "href": "STATUS.html#next-lesson",
+    "title": "Current Status",
+    "section": "",
+    "text": "Lesson 2\nObjectives\n\nCreating vectors with c()\nColon operator\nseq()\nrep()\npaste()\n\nKeep the lesson under 20 minutes– we can cover topics in more depth during class. This should just be an intro. Continue using USStates examples when appropriate. Avoid introducing unnecessary programming terminology.\nGoal is to finish lesson 2 + companion + canvas check in in approx 30 minutes of work."
+  },
+  {
+    "objectID": "STATUS.html#css-status",
+    "href": "STATUS.html#css-status",
+    "title": "Current Status",
+    "section": "",
+    "text": "Overall site styling is complete and satisfactory.\nCompleted\n\nSandstone theme\nTypography\nNavigation\nSidebar\nFooter\nColors\nTOC\nCode blocks\nOverall page layout\n\nRemaining\n\n\nCurrent Quarto callouts are functional but not ideal.\n\n\n\nKey Idea uses an exclamation icon that feels like a warning.\nLooking Ahead currently shares styling with other callouts.\nWe would like custom icons and colors rather than Quarto defaults.\n\n\n\n\nKey Idea - soft yellow - star icon (or similar non-warning icon)\nPredict - light blue - question icon\nTry It - light green - play icon\nCommon Mistake - light amber - warning triangle\nLooking Ahead - light lavender - forward arrow\n\n\n\nAttempting to override Quarto callouts with CSS produced inconsistent results (headers, bodies, and borders no longer matched).\n\n\n\nRather than continuing to patch CSS, investigate the Quarto-supported approach for customizing callouts (possibly SCSS or custom callout classes).\nUntil then, keep the existing Quarto callouts.\n\n\n\nDecide whether to (a) Customize Quarto callout theme properly (preferred) OR (b) Create completely custom callout classes"
+  },
+  {
+    "objectID": "lessons/found03-select-observations.html",
+    "href": "lessons/found03-select-observations.html",
+    "title": "Lesson 3: Select Observations",
+    "section": "",
+    "text": "By the end of this lesson, you should be able to:\n\nRecognize logical values (TRUE and FALSE).\nCompare vector values using logical operators.\nExplain what a logical vector represents.\nUse logical indexing to select observations.\nConnect a condition in R to a question about data.\n\nDownload the companion R guide for this lesson",
+    "crumbs": [
+      "Foundations",
+      "03 Selecting Observations"
+    ]
+  },
+  {
+    "objectID": "lessons/found03-select-observations.html#learning-objectives",
+    "href": "lessons/found03-select-observations.html#learning-objectives",
+    "title": "Lesson 3: Select Observations",
+    "section": "",
+    "text": "By the end of this lesson, you should be able to:\n\nRecognize logical values (TRUE and FALSE).\nCompare vector values using logical operators.\nExplain what a logical vector represents.\nUse logical indexing to select observations.\nConnect a condition in R to a question about data.\n\nDownload the companion R guide for this lesson",
+    "crumbs": [
+      "Foundations",
+      "03 Selecting Observations"
+    ]
+  },
+  {
+    "objectID": "lessons/found03-select-observations.html#introduction",
+    "href": "lessons/found03-select-observations.html#introduction",
+    "title": "Lesson 3: Select Observations",
+    "section": "Introduction",
+    "text": "Introduction\nSuppose we want to answer a question such as:\n\nWhich states have populations greater than 10 million?\n\nWe already know how to retrieve an observation by its position:\n\nstates[9]\n\n[1] \"Florida\"\n\npopulations[9]\n\n[1] 21.929\n\n\nBut here we don’t know the positions ahead of time.\nInstead, we need a way to ask R which observations satisfy a condition.",
+    "crumbs": [
+      "Foundations",
+      "03 Selecting Observations"
+    ]
+  },
+  {
+    "objectID": "lessons/found03-select-observations.html#comparisons-return-true-or-false",
+    "href": "lessons/found03-select-observations.html#comparisons-return-true-or-false",
+    "title": "Lesson 3: Select Observations",
+    "section": "Comparisons return TRUE or FALSE",
+    "text": "Comparisons return TRUE or FALSE\nLet’s start with one observation.\nFlorida is the 9th state in our vectors.\n\npopulations[9] &gt; 10\n\n[1] TRUE\n\n\nR returns TRUE because Florida’s population is greater than 10 million.\nNow try a condition that is not true.\n\npopulations[9] &lt; 5\n\n[1] FALSE\n\n\nR returns FALSE.\nTRUE and FALSE are called logical values.\n\n\n\n\n\n\nImportantKey Idea\n\n\n\nA comparison asks a yes-or-no question.\nR records the answer as TRUE or FALSE.\n\n\nSome common comparison operators are:\n\n\n\nOperator\nMeaning\n\n\n\n\n&gt;\ngreater than\n\n\n&lt;\nless than\n\n\n&gt;=\ngreater than or equal to\n\n\n&lt;=\nless than or equal to\n\n\n==\nequal to\n\n\n!=\nnot equal to\n\n\n\nNotice that R uses == to test whether two values are equal.",
+    "crumbs": [
+      "Foundations",
+      "03 Selecting Observations"
+    ]
+  },
+  {
+    "objectID": "lessons/found03-select-observations.html#compare-an-entire-vector",
+    "href": "lessons/found03-select-observations.html#compare-an-entire-vector",
+    "title": "Lesson 3: Select Observations",
+    "section": "Compare an entire vector",
+    "text": "Compare an entire vector\nThe same comparison can be applied to every value in a vector.\n\npopulations &gt; 10\n\n [1] FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE  TRUE  TRUE FALSE FALSE\n[13]  TRUE FALSE FALSE\n\n\nInstead of returning one answer, R returns one TRUE or FALSE for every state.\nWe can save those results as a new vector.\n\nlarge_population &lt;- populations &gt; 10\nlarge_population\n\n [1] FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE  TRUE  TRUE FALSE FALSE\n[13]  TRUE FALSE FALSE\n\n\nThis is a logical vector.\nEach value answers the same question for one observation:\n\nIs this state’s population greater than 10 million?\n\n\nWhat do you think this comparison will return?\n\nregions == \"S\"\n\n [1]  TRUE FALSE FALSE  TRUE FALSE FALSE FALSE FALSE  TRUE  TRUE FALSE FALSE\n[13] FALSE FALSE FALSE\n\n\nHow many TRUE values do you expect to see?",
+    "crumbs": [
+      "Foundations",
+      "03 Selecting Observations"
+    ]
+  },
+  {
+    "objectID": "lessons/found03-select-observations.html#logical-vectors-line-up-with-the-observations",
+    "href": "lessons/found03-select-observations.html#logical-vectors-line-up-with-the-observations",
+    "title": "Lesson 3: Select Observations",
+    "section": "Logical vectors line up with the observations",
+    "text": "Logical vectors line up with the observations\nThe logical vector has the same number of values as the original data.\n\nlength(states)\n\n[1] 15\n\nlength(large_population)\n\n[1] 15\n\n\nEach position still refers to the same observation.\nFor example, if the 9th value of large_population is TRUE, that tells us the 9th state satisfies the condition.\n\n\n\n\n\n\nImportantKey Idea\n\n\n\nA logical vector contains one TRUE or FALSE for each observation.\nThe positions still line up across all of our vectors.",
+    "crumbs": [
+      "Foundations",
+      "03 Selecting Observations"
+    ]
+  },
+  {
+    "objectID": "lessons/found03-select-observations.html#count-observations-that-satisfy-a-condition",
+    "href": "lessons/found03-select-observations.html#count-observations-that-satisfy-a-condition",
+    "title": "Lesson 3: Select Observations",
+    "section": "Count observations that satisfy a condition",
+    "text": "Count observations that satisfy a condition\nSometimes we only want to know how many observations meet a condition.\nIn calculations, R treats TRUE like 1 and FALSE like 0.\nThat means we can use sum() to count the TRUE values.\n\nsum(large_population)\n\n[1] 4\n\n\nWe can also put the comparison directly inside sum().\n\nsum(populations &gt; 10)\n\n[1] 4\n\n\nFor example, how many of the 15 states are in the South?\n\nsum(regions == \"S\")\n\n[1] 4",
+    "crumbs": [
+      "Foundations",
+      "03 Selecting Observations"
+    ]
+  },
+  {
+    "objectID": "lessons/found03-select-observations.html#select-the-observations-that-satisfy-a-condition",
+    "href": "lessons/found03-select-observations.html#select-the-observations-that-satisfy-a-condition",
+    "title": "Lesson 3: Select Observations",
+    "section": "Select the observations that satisfy a condition",
+    "text": "Select the observations that satisfy a condition\nOften we want to know which observations meet the condition.\nPreviously, we used a number inside square brackets:\n\nstates[9]\n\n[1] \"Florida\"\n\n\nWe can also put a logical vector inside the brackets.\n\nstates[large_population]\n\n[1] \"California\" \"Florida\"    \"Georgia\"    \"Illinois\"  \n\n\nR keeps the state names wherever large_population is TRUE.\nWe can use the same logical vector with another variable:\n\npopulations[large_population]\n\n[1] 39.243 21.929 10.823 12.693\n\n\nOr we can write the condition directly inside the brackets.\n\nstates[populations &gt; 10]\n\n[1] \"California\" \"Florida\"    \"Georgia\"    \"Illinois\"  \n\n\n\n\n\n\n\n\nImportantKey Idea\n\n\n\nLogical indexing keeps the values where the condition is TRUE.\nThis is the basic idea behind filtering observations.",
+    "crumbs": [
+      "Foundations",
+      "03 Selecting Observations"
+    ]
+  },
+  {
+    "objectID": "lessons/found03-select-observations.html#another-example",
+    "href": "lessons/found03-select-observations.html#another-example",
+    "title": "Lesson 3: Select Observations",
+    "section": "Another Example",
+    "text": "Another Example\nSuppose we want to find states with household income above $80,000.\nThe values in house_income are measured in thousands of dollars.\n\nhigh_income &lt;- house_income &gt; 80\nhigh_income\n\n [1] FALSE  TRUE FALSE FALSE  TRUE  TRUE  TRUE  TRUE FALSE FALSE  TRUE FALSE\n[13]  TRUE FALSE FALSE\n\n\nWe can count the states that satisfy the condition:\n\nsum(high_income)\n\n[1] 7\n\n\nand identify them:\n\nstates[high_income]\n\n[1] \"Alaska\"      \"California\"  \"Colorado\"    \"Connecticut\" \"Delaware\"   \n[6] \"Hawaii\"      \"Illinois\"   \n\nhouse_income[high_income]\n\n[1] 86.631 95.521 92.911 91.665 81.361 95.322 80.306\n\n\nThe process is the same each time:\n\nWrite a condition.\nR creates a logical vector.\nUse that logical vector to count or select observations.",
+    "crumbs": [
+      "Foundations",
+      "03 Selecting Observations"
+    ]
+  },
+  {
+    "objectID": "lessons/found03-select-observations.html#try-it",
+    "href": "lessons/found03-select-observations.html#try-it",
+    "title": "Lesson 3: Select Observations",
+    "section": "Try It",
+    "text": "Try It\nOpen the companion R script and use the student_spending vector to investigate states that spend more than $15,000 per pupil.\nTry to answer:\n\nWhich observations satisfy the condition?\nHow many states satisfy the condition?\nWhich states satisfy the condition?\nWhat are their student spending values?\n\nAs usual, try to predict what each command will do before running it.",
+    "crumbs": [
+      "Foundations",
+      "03 Selecting Observations"
+    ]
+  },
+  {
+    "objectID": "lessons/found03-select-observations.html#optional-preview-combining-conditions",
+    "href": "lessons/found03-select-observations.html#optional-preview-combining-conditions",
+    "title": "Lesson 3: Select Observations",
+    "section": "Optional Preview: Combining Conditions",
+    "text": "Optional Preview: Combining Conditions\nSometimes a question involves more than one condition.\nThe & operator means AND: both conditions must be true.\n\nstates[populations &gt; 10 & populations &lt; 30]\n\n[1] \"Florida\"  \"Georgia\"  \"Illinois\"\n\n\nThe | operator means OR: at least one condition must be true.\n\nstates[regions == \"W\" | regions == \"MW\"]\n\n[1] \"Alaska\"     \"Arizona\"    \"California\" \"Colorado\"   \"Hawaii\"    \n[6] \"Idaho\"      \"Illinois\"   \"Indiana\"    \"Iowa\"      \n\n\nWe’ll work more with combinations of conditions later. For now, the important idea is that each comparison still produces TRUE or FALSE.",
+    "crumbs": [
+      "Foundations",
+      "03 Selecting Observations"
+    ]
+  },
+  {
+    "objectID": "lessons/found03-select-observations.html#looking-ahead",
+    "href": "lessons/found03-select-observations.html#looking-ahead",
+    "title": "Lesson 3: Select Observations",
+    "section": "Looking Ahead",
+    "text": "Looking Ahead\nSo far, we’ve been selecting observations from individual vectors.\nSoon we’ll work with data frames, where several related vectors are stored together. The same idea will carry over: filtering a dataset means keeping the observations that satisfy a condition.",
+    "crumbs": [
+      "Foundations",
+      "03 Selecting Observations"
+    ]
+  },
+  {
+    "objectID": "lessons/found03-select-observations.html#lesson-summary",
+    "href": "lessons/found03-select-observations.html#lesson-summary",
+    "title": "Lesson 3: Select Observations",
+    "section": "Lesson Summary",
+    "text": "Lesson Summary\nBy the end of this lesson, you should understand that:\n\nComparisons return logical values: TRUE or FALSE.\nComparing a vector creates a logical vector.\nA logical vector contains one value for each observation.\nsum() can count how many observations satisfy a condition.\nLogical vectors can be used inside [] to select observations.\nFiltering begins by identifying which observations satisfy a condition.",
+    "crumbs": [
+      "Foundations",
+      "03 Selecting Observations"
+    ]
+  },
+  {
+    "objectID": "lessons/found03-select-observations.html#r-reference",
+    "href": "lessons/found03-select-observations.html#r-reference",
+    "title": "Lesson 3: Select Observations",
+    "section": "R Reference",
+    "text": "R Reference\n\n\n\nOperator / Function\nPurpose\n\n\n\n\n&gt;\nGreater than\n\n\n&lt;\nLess than\n\n\n&gt;=\nGreater than or equal to\n\n\n&lt;=\nLess than or equal to\n\n\n==\nEqual to\n\n\n!=\nNot equal to\n\n\nsum(x)\nAdd values; can count TRUE values\n\n\n&\nAND\n\n\n|\nOR\n\n\n\n\n\n\nSyntax\nPurpose\n\n\n\n\nx &gt; value\nCompare every value in a vector\n\n\nx[condition]\nKeep values where the condition is TRUE",
+    "crumbs": [
+      "Foundations",
+      "03 Selecting Observations"
+    ]
+  },
+  {
+    "objectID": "lessons/found04-missing-values.html",
+    "href": "lessons/found04-missing-values.html",
+    "title": "Lesson 4: Understanding Missing Values",
+    "section": "",
+    "text": "By the end of this lesson, you should be able to:\n\nExplain why NA means unknown, not zero or blank.\nPredict how missing values affect arithmetic and summary statistics.\nIdentify missing values using is.na().\nCount the number and proportion of missing values.\nRemove missing values when appropriate using logical indexing.\n\nDownload the companion R guide for this lesson",
+    "crumbs": [
+      "Foundations",
+      "04 Understanding Missing Values"
+    ]
+  },
+  {
+    "objectID": "lessons/found04-missing-values.html#learning-objectives",
+    "href": "lessons/found04-missing-values.html#learning-objectives",
+    "title": "Lesson 4: Understanding Missing Values",
+    "section": "",
+    "text": "By the end of this lesson, you should be able to:\n\nExplain why NA means unknown, not zero or blank.\nPredict how missing values affect arithmetic and summary statistics.\nIdentify missing values using is.na().\nCount the number and proportion of missing values.\nRemove missing values when appropriate using logical indexing.\n\nDownload the companion R guide for this lesson",
+    "crumbs": [
+      "Foundations",
+      "04 Understanding Missing Values"
+    ]
+  },
+  {
+    "objectID": "lessons/found04-missing-values.html#introduction",
+    "href": "lessons/found04-missing-values.html#introduction",
+    "title": "Lesson 4: Understanding Missing Values",
+    "section": "Introduction",
+    "text": "Introduction\nReal datasets are rarely complete. Sometimes a value is missing because it was never collected, a participant skipped a question, or the information could not be determined.\nIn R, missing values are represented by NA, which stands for Not Available.\nThe important idea is that NA means “unknown.” It does not mean zero or an empty value.",
+    "crumbs": [
+      "Foundations",
+      "04 Understanding Missing Values"
+    ]
+  },
+  {
+    "objectID": "lessons/found04-missing-values.html#arithmetic-with-missing-values",
+    "href": "lessons/found04-missing-values.html#arithmetic-with-missing-values",
+    "title": "Lesson 4: Understanding Missing Values",
+    "section": "Arithmetic with Missing Values",
+    "text": "Arithmetic with Missing Values\nSuppose we have a vector of quiz scores for a small class, but one student was absent that day.\nThe student’s grade is not 0; it is missing. They simply haven’t made up the quiz yet, so we don’t know what their grade will be yet.\n\nquiz_scores &lt;- c(8, 10, NA, 7, 9)\n\nquiz_scores\n\n[1]  8 10 NA  7  9\n\nNA + 5\n\n[1] NA\n\nmean(quiz_scores)\n\n[1] NA\n\n\n\n\n\n\n\n\nImportantKey Idea\n\n\n\nMissing values propagate uncertainty.\nIf part of a calculation is unknown, the result is usually unknown.",
+    "crumbs": [
+      "Foundations",
+      "04 Understanding Missing Values"
+    ]
+  },
+  {
+    "objectID": "lessons/found04-missing-values.html#finding-missing-values",
+    "href": "lessons/found04-missing-values.html#finding-missing-values",
+    "title": "Lesson 4: Understanding Missing Values",
+    "section": "Finding Missing Values",
+    "text": "Finding Missing Values\nLet’s return to the US States data. Recall that the fruits vector measures the percentage of people in each state who eat fruit at least once per day.\nBut did every state actually record this data? Or did some states not report their fruit-eating habits?\n\nfruit # hard to read\n\n [1] 54.2 57.9 58.4 54.6 63.8 61.9 64.6 60.3   NA 59.0 57.5 58.3 60.9 57.3 58.5\n[16] 56.3 55.0 51.4 65.0 62.9 63.3 60.6 63.6 53.2 56.6 60.0 57.3 58.1 64.3 64.9\n[31] 58.8 64.3 59.7 56.0 57.0 51.3 62.3 60.7 65.1 58.0 56.6 53.9 59.4 62.3 66.0\n[46] 60.4 63.9 54.0 61.2 56.7\n\nlength(fruit) # not helpful\n\n[1] 50\n\n# check for missing data directly:\nis.na(fruit)\n\n [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE\n[13] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n[25] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n[37] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n[49] FALSE FALSE\n\n\n\n\n\n\n\n\nImportantKey Idea\n\n\n\nis.na() creates a logical vector.\nTRUE means the value is missing.\nFALSE means the value is present.",
+    "crumbs": [
+      "Foundations",
+      "04 Understanding Missing Values"
+    ]
+  },
+  {
+    "objectID": "lessons/found04-missing-values.html#counting-missing-values",
+    "href": "lessons/found04-missing-values.html#counting-missing-values",
+    "title": "Lesson 4: Understanding Missing Values",
+    "section": "Counting Missing Values",
+    "text": "Counting Missing Values\nOnce we have a logical vector telling us which values are missing (TRUE) or not missing (FALSE), we can work with it the same way we worked with logical vectors in the last section.\nOne of the most common tasks is to count the number of missing (or non-missing) values. This is a great diagnostic to run on any variable.\n\n# How many states are missing the fruit data? \nsum(is.na(fruit))\n\n[1] 1\n\n\nThe physical variable measures the percent of people in each state who report doing 150+ minutes of aerobic physical activity per week.\nCan you adapt the earlier code to count the number of states that did not report their physical activity data?\n\n# How many states are missing the physical activity data? \n#\n\nCounting the number of observations that are missing is a good start, but in some datasets, it’s more helpful to find the proportion of data that is missing. Is 10% missing? or 40% missing? This can make a big difference for whether we are able to use the variable at all.\nThink about how we calculate proportions: PART / WHOLE. In other words:\n\\[\\frac{\\text{Number of states with missing data}}{\\text{Total number of states}}\\] Can we use R functions we’ve already learned to calculate each of these pieces?\nYes!\n\n# Number of states with missing physical data:\nsum(is.na(physical))\n\n[1] 2\n\n# Total number of states in the dataset: \nlength(physical)\n\n[1] 50\n\n# What proportion of states are missing the physical activity data?\nsum(is.na(physical)) / length(physical)\n\n[1] 0.04\n\nmean(is.na(physical))\n\n[1] 0.04\n\n\nShortcut: remember that R records TRUE as 1 and FALSE as 0. Because of this, we can actually use the mean() function to find the proportion of missing data. Weird, but true!\n\\[\n\\begin{aligned}\n\\text{mean(is.na(physical))}\n    &= \\frac{\\text{FALSE} + \\text{FALSE} + \\cdots + \\text{TRUE}+ \\cdots + \\text{FALSE}}{\\text{total number of states}} \\\\[0.8em]\n    &= \\frac{0 + 0 + \\cdots + 1+\\cdots+0}{\\text{total number of states}} \\\\[0.8em]\n    &= \\frac{\\text{number of missing values}}{\\text{total number of states}} \\\\[0.8em]\n    &= \\text{proportion of missing values}\n\\end{aligned}\n\\]\nPro-tip: Using mean(is.na(x)) to find the proportion of missing values is a common shortcut among data scientists/statisticians who are too lazy to write out the full calculation. But if you aren’t comfortable with why it works, there’s no harm in actually writing out sum(is.na(x)) / length(x). Do what makes sense to you.",
+    "crumbs": [
+      "Foundations",
+      "04 Understanding Missing Values"
+    ]
+  },
+  {
+    "objectID": "lessons/found04-missing-values.html#selecting-non-missing-observations",
+    "href": "lessons/found04-missing-values.html#selecting-non-missing-observations",
+    "title": "Lesson 4: Understanding Missing Values",
+    "section": "Selecting Non-Missing Observations",
+    "text": "Selecting Non-Missing Observations\nSometimes we want to ignore the missing values and work only with the observations that contain data.\nTo do that, we first need a logical vector that identifies the observed values rather than the missing ones.\nThe ! operator means NOT. It reverses each logical value:\n\nTRUE becomes FALSE\nFALSE becomes TRUE\n\nSo if is.na(fruit) asks “Is this value missing?”\nthen !is.na(fruit) asks “Is this value not missing?”\n\nis.na(fruit)\n\n [1] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE  TRUE FALSE FALSE FALSE\n[13] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n[25] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n[37] FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE FALSE\n[49] FALSE FALSE\n\n!is.na(fruit)\n\n [1]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE FALSE  TRUE  TRUE  TRUE\n[13]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE\n[25]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE\n[37]  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE  TRUE\n[49]  TRUE  TRUE\n\n\nNow we have a logical vector with TRUE wherever the data are available.\nJust as in the previous lesson, we can use that logical vector inside square brackets ([]) to select the observations we want to keep.\n\nfruit_noNA &lt;- fruit[!is.na(fruit)]\nfruit_noNA\n\n [1] 54.2 57.9 58.4 54.6 63.8 61.9 64.6 60.3 59.0 57.5 58.3 60.9 57.3 58.5 56.3\n[16] 55.0 51.4 65.0 62.9 63.3 60.6 63.6 53.2 56.6 60.0 57.3 58.1 64.3 64.9 58.8\n[31] 64.3 59.7 56.0 57.0 51.3 62.3 60.7 65.1 58.0 56.6 53.9 59.4 62.3 66.0 60.4\n[46] 63.9 54.0 61.2 56.7\n\n\nNotice that fruit_noNA contains fewer values than the original fruit vector because the missing observation has been removed.\n\nlength(fruit)\n\n[1] 50\n\nlength(fruit_noNA)\n\n[1] 49\n\n\nIn general, be cautious about just removing NA values– this can end up backfiring, badly. It’s much better to investigate cases with missing data and try to discover why the data is missing. Sometimes you can even impute (or guess/estimate) missing values.\nIn practice, we don’t often need to manually remove values from a vector, because R has smart options for handling missing data inside calculations (more on that next!).\nIf you do decide to manually remove the missing data (only after clearing it with your advisor/boss/professor), then make sure you remove the same cases from any other affected vectors, such as the vector of state names, or the data will no longer match up.\n\nstates_noNA &lt;- states[!is.na(fruit)]\n\nhead(states_noNA, 10)\n\n [1] \"Alabama\"     \"Alaska\"      \"Arizona\"     \"Arkansas\"    \"California\" \n [6] \"Colorado\"    \"Connecticut\" \"Delaware\"    \"Georgia\"     \"Hawaii\"     \n\nlength(states_noNA)\n\n[1] 49\n\nlength(fruit_noNA)\n\n[1] 49\n\n\n\n\n\n\n\n\nImportantKey Idea\n\n\n\nWhen you remove observations from one vector, you should usually remove the same observations from every related vector so they continue to describe the same observations.",
+    "crumbs": [
+      "Foundations",
+      "04 Understanding Missing Values"
+    ]
+  },
+  {
+    "objectID": "lessons/found04-missing-values.html#comparing-summary-statistics",
+    "href": "lessons/found04-missing-values.html#comparing-summary-statistics",
+    "title": "Lesson 4: Understanding Missing Values",
+    "section": "Comparing Summary Statistics",
+    "text": "Comparing Summary Statistics\nIf you try to compute functions or summary statistics on a vector with missing data, R will always report NA as the answer.\n\nmean(fruit)\n\n[1] NA\n\nmean(quiz_scores)\n\n[1] NA\n\n\nThat’s because, since at least one value is missing, we don’t actually know the true mean of the data set.\nR forces us to acknowledge this and make a conscious choice about how to handle the missing data.\nIf you decide you want to compute the average for the data that is present, then you can.\n\nmean(fruit_noNA)\n\n[1] 59.33265\n\nmean(fruit[!is.na(fruit)])\n\n[1] 59.33265\n\n\nThis is a little clunky, and thankfully R has a streamlined option. If you know you have missing data and you want R to remove the missing data and calculate the summary statistic ignoring it, you can:\n\nmean(fruit, na.rm = TRUE)\n\n[1] 59.33265\n\nmax(fruit, na.rm = TRUE)\n\n[1] 66\n\nsd(fruit, na.rm = TRUE)\n\n[1] 3.818343\n\n# etc.\n\nIn this case, na.rm = TRUE tells R to set the “remove NA values” option to TRUE. In other words, remove the NA values before calculating the mean.\nUsing na.rm = TRUE doesn’t change the original fruit vector; it only affects the calculation itself.",
+    "crumbs": [
+      "Foundations",
+      "04 Understanding Missing Values"
+    ]
+  },
+  {
+    "objectID": "lessons/found04-missing-values.html#try-it",
+    "href": "lessons/found04-missing-values.html#try-it",
+    "title": "Lesson 4: Understanding Missing Values",
+    "section": "Try It",
+    "text": "Try It\nOpen the companion R script and investigate the physical vector.\n\nWhich values are missing?\nHow many states are missing physical activity data?\nWhat proportion of states are missing physical activity data?\nWhich states are missing physical activity data?\nWhat is the mean physical activity value after removing missing values?",
+    "crumbs": [
+      "Foundations",
+      "04 Understanding Missing Values"
+    ]
+  },
+  {
+    "objectID": "lessons/found04-missing-values.html#looking-ahead",
+    "href": "lessons/found04-missing-values.html#looking-ahead",
+    "title": "Lesson 4: Understanding Missing Values",
+    "section": "Looking Ahead",
+    "text": "Looking Ahead\nMissing values are common in real datasets.\nBefore beginning an analysis, it is good practice to check whether data are missing and think carefully about how those missing values should be handled.\nLater in the course, we’ll see how these same ideas apply to entire data frames.",
+    "crumbs": [
+      "Foundations",
+      "04 Understanding Missing Values"
+    ]
+  },
+  {
+    "objectID": "lessons/found04-missing-values.html#lesson-summary",
+    "href": "lessons/found04-missing-values.html#lesson-summary",
+    "title": "Lesson 4: Understanding Missing Values",
+    "section": "Lesson Summary",
+    "text": "Lesson Summary\n\nNA represents an unknown value.\nMissing values usually cause calculations to return NA.\nis.na() identifies missing values.\nMissing values can be counted with sum() or mean().\nLogical indexing with !is.na() keeps observed values.\nRelated vectors should be filtered together.",
+    "crumbs": [
+      "Foundations",
+      "04 Understanding Missing Values"
+    ]
+  },
+  {
+    "objectID": "lessons/found04-missing-values.html#r-reference",
+    "href": "lessons/found04-missing-values.html#r-reference",
+    "title": "Lesson 4: Understanding Missing Values",
+    "section": "R Reference",
+    "text": "R Reference\n\n\n\n\n\n\n\nFunction / Syntax\nPurpose\n\n\n\n\nis.na(x)\nIdentify missing values\n\n\n!is.na(x)\nIdentify non-missing values\n\n\nsum(is.na(x))\nCount missing values\n\n\nmean(is.na(x))\nProportion of missing values\n\n\nmean(x, na.rm = TRUE)\nIgnore missing values when calculating the mean",
+    "crumbs": [
+      "Foundations",
+      "04 Understanding Missing Values"
+    ]
+  },
+  {
+    "objectID": "lessons/found05-summarize-variable.html",
+    "href": "lessons/found05-summarize-variable.html",
+    "title": "Lesson 5: Exploring a Variable",
+    "section": "",
+    "text": "By the end of this lesson, you should be able to:\n\nChoose an appropriate summary for a quantitative or categorical variable.\nDescribe the center and spread of a quantitative variable.\nIdentify the categories present in a categorical variable.\nProduce simple frequency tables and bar plots.\nExplain why graphs are an important part of exploratory data analysis.\n\nDownload the companion R guide for this lesson",
+    "crumbs": [
+      "Foundations",
+      "05 Summarizing a Variable"
+    ]
+  },
+  {
+    "objectID": "lessons/found05-summarize-variable.html#learning-objectives",
+    "href": "lessons/found05-summarize-variable.html#learning-objectives",
+    "title": "Lesson 5: Exploring a Variable",
+    "section": "",
+    "text": "By the end of this lesson, you should be able to:\n\nChoose an appropriate summary for a quantitative or categorical variable.\nDescribe the center and spread of a quantitative variable.\nIdentify the categories present in a categorical variable.\nProduce simple frequency tables and bar plots.\nExplain why graphs are an important part of exploratory data analysis.\n\nDownload the companion R guide for this lesson",
+    "crumbs": [
+      "Foundations",
+      "05 Summarizing a Variable"
+    ]
+  },
+  {
+    "objectID": "lessons/found05-summarize-variable.html#introduction",
+    "href": "lessons/found05-summarize-variable.html#introduction",
+    "title": "Lesson 5: Exploring a Variable",
+    "section": "Introduction",
+    "text": "Introduction\nIn the first four lessons, you learned how R stores data, how to create vectors, how to select observations, and how to work with missing values.\nNow we’re ready to ask an important question:\n\nWhat does this variable look like?\n\nThis process is called exploratory data analysis (EDA).\nRather than jumping directly into formal analyses, we first try to understand our data by calculating simple summaries and creating simple graphs.",
+    "crumbs": [
+      "Foundations",
+      "05 Summarizing a Variable"
+    ]
+  },
+  {
+    "objectID": "lessons/found05-summarize-variable.html#exploring-a-quantitative-variable",
+    "href": "lessons/found05-summarize-variable.html#exploring-a-quantitative-variable",
+    "title": "Lesson 5: Exploring a Variable",
+    "section": "Exploring a Quantitative Variable",
+    "text": "Exploring a Quantitative Variable\nSuppose we’re interested in the percentage of adults who report eating vegetables every day. This is recorded in the vegetables vector.\nWhat can we say about the distribution of vegetable eaters? Let’s start with some basic explorations.\n\nHow many observations do we have?\n\n\nlength(vegetables)\n\n[1] 50\n\n\nOK good, we have one value for each of the 50 states. But wait…\n\nIs there any missing data?\n\n\nsum(is.na(vegetables))\n\n[1] 1\n\n\nWho didn’t report their data?\n\nstates[is.na(vegetables)]\n\n[1] \"Florida\"\n\n\nSigh. Oh Florida.\nWell, at least Florida is the only state missing. Let’s keep going.\n\nWhat is a typical value?\n\n\nmean(vegetables)\n\n[1] NA\n\nmedian(vegetables)\n\n[1] NA\n\n\nOops! Forgot to account for the missing values. Thankfully we checked earlier and saw there was only one missing value. Let’s have R ignore that missing value.\n\nmean(vegetables, na.rm = TRUE)\n\n[1] 80.2551\n\nmedian(vegetables, na.rm = TRUE)\n\n[1] 80.3\n\n\nLooks like around 80% of people in each state tend to report eating vegetables each day. Are you surprised by this, or does it seem reasonable to you?\n\nWhat are the smallest and largest values?\n\n\nmin(vegetables, na.rm = TRUE)\n\n[1] 74.4\n\nmax(vegetables, na.rm = TRUE)\n\n[1] 86.9\n\n\nNot as much variation as we might have expected here… Interesting.\n\n\n\n\n\n\nImportantKey Idea\n\n\n\nSimple summary statistics answer specific questions about a variable, but no single number tells the whole story.",
+    "crumbs": [
+      "Foundations",
+      "05 Summarizing a Variable"
+    ]
+  },
+  {
+    "objectID": "lessons/found05-summarize-variable.html#looking-at-the-distribution",
+    "href": "lessons/found05-summarize-variable.html#looking-at-the-distribution",
+    "title": "Lesson 5: Exploring a Variable",
+    "section": "Looking at the Distribution",
+    "text": "Looking at the Distribution\nA histogram helps us understand the overall shape of the data.\n\nhist(vegetables)\n\n\n\n\n\n\n\n\nAs you look at the histogram, ask:\n\nWhat is the shape?\nWhere is the center?\nHow spread out are the values?\nAre there any possible outliers?",
+    "crumbs": [
+      "Foundations",
+      "05 Summarizing a Variable"
+    ]
+  },
+  {
+    "objectID": "lessons/found05-summarize-variable.html#exploring-a-categorical-variable",
+    "href": "lessons/found05-summarize-variable.html#exploring-a-categorical-variable",
+    "title": "Lesson 5: Exploring a Variable",
+    "section": "Exploring a Categorical Variable",
+    "text": "Exploring a Categorical Variable\nSuppose we want to understand the distribution of states across regions. As we saw earlier, this is a categorical variable, which R stores as text (character) data.\n\ntypeof(regions)\n\n[1] \"character\"\n\n\nWe could print the entire regions vector, but let’s start by figuring out just how many categories there are. What are the options for region in this data set?\n\nunique(regions)\n\n[1] \"S\"  \"W\"  \"NE\" \"MW\"\n\n\nInteresting. Many Official government data sets use more regions than this (around 9) to help account for geographic variability. With only 4 regions, I wonder how many states are in each region?\n\ntable(regions)\n\nregions\nMW NE  S  W \n13 11 13 13 \n\n\nSeems pretty balanced among the regions, with a couple fewer states in the Northeast. What’s the percent breakdown of states in each region?\n\ntable(regions) / length(regions)\n\nregions\n  MW   NE    S    W \n0.26 0.22 0.26 0.26 \n\n\nSo around 22% - 26% of states are classified in each of the four regions.",
+    "crumbs": [
+      "Foundations",
+      "05 Summarizing a Variable"
+    ]
+  },
+  {
+    "objectID": "lessons/found05-summarize-variable.html#looking-at-the-categories",
+    "href": "lessons/found05-summarize-variable.html#looking-at-the-categories",
+    "title": "Lesson 5: Exploring a Variable",
+    "section": "Looking at the Categories",
+    "text": "Looking at the Categories\nThis distribution is fairly equal across the categories, but it’s still a good idea to visualize it with a graph:\n\nbarplot(table(regions))\n\n\n\n\n\n\n\n\nAsk yourself:\n\nWhich region has the most states?\nWhich has the fewest?\nAre the counts fairly balanced?\n\n\n\n\n\n\n\nImportantKey Idea\n\n\n\nChoose summaries that match the type of variable.",
+    "crumbs": [
+      "Foundations",
+      "05 Summarizing a Variable"
+    ]
+  },
+  {
+    "objectID": "lessons/found05-summarize-variable.html#try-it",
+    "href": "lessons/found05-summarize-variable.html#try-it",
+    "title": "Lesson 5: Exploring a Variable",
+    "section": "Try It",
+    "text": "Try It\nOpen the companion R guide and explore the physical variable.\n\nWhat type of variable is this? Categorical or quantitative?\nIs there any missing data?\nWhat is the mean?\nWhat is the median?\nWhat are the minimum and maximum values?\nWhat does the histogram suggest about the distribution?\n\nRemember to account for the missing values you learned about in the previous lesson.",
+    "crumbs": [
+      "Foundations",
+      "05 Summarizing a Variable"
+    ]
+  },
+  {
+    "objectID": "lessons/found05-summarize-variable.html#one-more-question",
+    "href": "lessons/found05-summarize-variable.html#one-more-question",
+    "title": "Lesson 5: Exploring a Variable",
+    "section": "One More Question…",
+    "text": "One More Question…\nSuppose we now ask:\n\nDoes vegetable consumption differ by region?\n\nWe know how to summarize vegetables.\nWe know how to summarize region.\nBut how do we summarize vegetables separately for each region, or create one histogram for each region?\nThose questions are much harder to answer using only the base R tools we’ve learned so far.",
+    "crumbs": [
+      "Foundations",
+      "05 Summarizing a Variable"
+    ]
+  },
+  {
+    "objectID": "lessons/found05-summarize-variable.html#looking-ahead",
+    "href": "lessons/found05-summarize-variable.html#looking-ahead",
+    "title": "Lesson 5: Exploring a Variable",
+    "section": "Looking Ahead",
+    "text": "Looking Ahead\nIn the next module, we’ll begin using the tidyverse and ggplot2.\nThese tools make it much easier to summarize data, compare groups, and create attractive graphics.",
+    "crumbs": [
+      "Foundations",
+      "05 Summarizing a Variable"
+    ]
+  },
+  {
+    "objectID": "lessons/found05-summarize-variable.html#lesson-summary",
+    "href": "lessons/found05-summarize-variable.html#lesson-summary",
+    "title": "Lesson 5: Exploring a Variable",
+    "section": "Lesson Summary",
+    "text": "Lesson Summary\n\nExploratory data analysis begins by asking questions about a variable.\nQuantitative variables can be summarized with numerical summaries and histograms.\nCategorical variables can be summarized with frequency tables and bar plots.\nDifferent variable types require different summaries.\nMore complex questions require more powerful tools.",
+    "crumbs": [
+      "Foundations",
+      "05 Summarizing a Variable"
+    ]
+  },
+  {
+    "objectID": "lessons/found05-summarize-variable.html#r-reference",
+    "href": "lessons/found05-summarize-variable.html#r-reference",
+    "title": "Lesson 5: Exploring a Variable",
+    "section": "R Reference",
+    "text": "R Reference\n\n\n\nFunction\nPurpose\n\n\n\n\nlength()\nCount observations\n\n\nmean()\nCalculate the mean\n\n\nmedian()\nCalculate the median\n\n\nmin()\nSmallest value\n\n\nmax()\nLargest value\n\n\nhist()\nCreate a histogram\n\n\nunique()\nIdentify categories\n\n\ntable()\nCount categories\n\n\nbarplot()\nCreate a bar plot",
+    "crumbs": [
+      "Foundations",
+      "05 Summarizing a Variable"
+    ]
+  }
+]

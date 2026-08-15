@@ -1,0 +1,227 @@
+---
+title: "Lesson 5: Exploring a Variable"
+subtitle: "How can we start exploring a variable?"
+---
+
+```{r}
+#| include: false
+source("../data/lock5-usstates.R")
+```
+
+## Learning Objectives
+
+By the end of this lesson, you should be able to:
+
+- Choose an appropriate summary for a quantitative or categorical variable.
+- Describe the center and spread of a quantitative variable.
+- Identify the categories present in a categorical variable.
+- Produce simple frequency tables and bar plots.
+- Explain why graphs are an important part of exploratory data analysis.
+
+[Download the companion R guide for this lesson](found05-summarize-variable-companion.R)
+
+---
+
+## Introduction
+
+In the first four lessons, you learned how R stores data, how to create vectors, how to select observations, and how to work with missing values.
+
+Now we're ready to ask an important question:
+
+> **What does this variable look like?**
+
+This process is called **exploratory data analysis (EDA)**.
+
+Rather than jumping directly into formal analyses, we first try to understand our data by calculating simple summaries and creating simple graphs.
+
+---
+
+## Exploring a Quantitative Variable
+
+Suppose we're interested in the percentage of adults who report eating vegetables every day. This is recorded in the `vegetables` vector. 
+
+What can we say about the distribution of vegetable eaters? Let's start with some basic explorations. 
+
+> **How many observations do we have?**
+
+```{r}
+length(vegetables)
+```
+
+OK good, we have one value for each of the 50 states. But wait...
+
+> **Is there any missing data?**
+
+```{r}
+sum(is.na(vegetables))
+```
+Who didn't report their data? 
+
+```{r}
+states[is.na(vegetables)]
+```
+
+Sigh. Oh Florida.
+
+Well, at least Florida is the only state missing. Let's keep going. 
+
+
+> **What is a typical value?**
+
+```{r}
+mean(vegetables)
+median(vegetables)
+```
+Oops! Forgot to account for the missing values. Thankfully we checked earlier and saw there was only one missing value. Let's have R ignore that missing value. 
+
+```{r}
+mean(vegetables, na.rm = TRUE)
+median(vegetables, na.rm = TRUE)
+```
+
+Looks like around `r round(mean(vegetables, na.rm = TRUE))`% of people in each state tend to report eating vegetables each day. Are you surprised by this, or does it seem reasonable to you? 
+
+
+> **What are the smallest and largest values?**
+
+```{r}
+min(vegetables, na.rm = TRUE)
+max(vegetables, na.rm = TRUE)
+```
+
+Not as much variation as we might have expected here... Interesting. 
+
+
+::: {.callout-note title="Key Idea"}
+Simple summary statistics answer specific questions about a variable, but no single number tells the whole story.
+:::
+
+---
+
+## Looking at the Distribution
+
+A histogram helps us understand the overall shape of the data.
+
+```{r}
+hist(vegetables)
+```
+
+As you look at the histogram, ask:
+
+- What is the shape?
+- Where is the center?
+- How spread out are the values?
+- Are there any possible outliers?
+
+---
+
+## Exploring a Categorical Variable
+
+Suppose we want to understand the distribution of states across regions. As we saw earlier, this is a *categorical variable*, which R stores as text (character) data. 
+
+```{r}
+typeof(regions)
+```
+
+We could print the entire regions vector, but let's start by figuring out just how many categories there are. What are the options for region in this data set? 
+
+```{r}
+unique(regions)
+```
+
+Interesting. Many Official government data sets use more regions than this (around 9) to help account for geographic variability. With only 4 regions, I wonder how many states are in each region? 
+
+```{r}
+table(regions)
+```
+Seems pretty balanced among the regions, with a couple fewer states in the Northeast. What's the percent breakdown of states in each region? 
+
+```{r}
+table(regions) / length(regions)
+```
+So around 22% - 26% of states are classified in each of the four regions. 
+
+---
+
+## Looking at the Categories
+
+This distribution is fairly equal across the categories, but it's still a good idea to visualize it with a graph: 
+
+```{r}
+barplot(table(regions))
+```
+
+Ask yourself:
+
+- Which region has the most states?
+- Which has the fewest?
+- Are the counts fairly balanced?
+
+::: {.callout-note title="Key Idea"}
+Choose summaries that match the type of variable.
+:::
+
+---
+
+## Try It
+
+Open the companion R guide and explore the `physical` variable.
+
+- What type of variable is this? Categorical or quantitative? 
+- Is there any missing data? 
+- What is the mean?
+- What is the median?
+- What are the minimum and maximum values?
+- What does the histogram suggest about the distribution?
+
+Remember to account for the missing values you learned about in the previous lesson.
+
+---
+
+## One More Question...
+
+Suppose we now ask:
+
+> **Does vegetable consumption differ by region?**
+
+We know how to summarize vegetables.
+
+We know how to summarize region.
+
+But how do we summarize **vegetables separately for each region**, or create **one histogram for each region**?
+
+Those questions are much harder to answer using only the base R tools we've learned so far.
+
+---
+
+## Looking Ahead
+
+In the next module, we'll begin using the **tidyverse** and **ggplot2**.
+
+These tools make it much easier to summarize data, compare groups, and create attractive graphics.
+
+---
+
+## Lesson Summary
+
+- Exploratory data analysis begins by asking questions about a variable.
+- Quantitative variables can be summarized with numerical summaries and histograms.
+- Categorical variables can be summarized with frequency tables and bar plots.
+- Different variable types require different summaries.
+- More complex questions require more powerful tools.
+
+---
+
+## R Reference
+
+| Function | Purpose |
+|----------|---------|
+| `length()` | Count observations |
+| `mean()` | Calculate the mean |
+| `median()` | Calculate the median |
+| `min()` | Smallest value |
+| `max()` | Largest value |
+| `hist()` | Create a histogram |
+| `unique()` | Identify categories |
+| `table()` | Count categories |
+| `barplot()` | Create a bar plot |

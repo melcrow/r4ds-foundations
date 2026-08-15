@@ -1,0 +1,44 @@
+project:
+  type: website
+  output-dir: docs
+  resources:
+    - lessons/*.R
+  render:
+    - index.qmd
+    - lessons/*.qmd
+    
+website:
+  title: "R Foundations"
+
+  sidebar:
+    style: "docked"
+    title: "R Foundations"
+    contents:
+      - href: index.qmd
+        text: Home
+      - section: "Foundations"
+        contents:
+          - href: lessons/found01-vectors.qmd
+            text: "01 Variables as Vectors"
+          - href: lessons/found02-create-vectors.qmd
+            text: "02 Creating Useful Vectors"
+          - href: lessons/found03-select-observations.qmd
+            text: "03 Selecting Observations"
+          - href: lessons/found04-missing-values.qmd
+            text: "04 Understanding Missing Values"
+          - href: lessons/found05-summarize-variable.qmd
+            text: "05 Exploring a Variable"
+
+  page-footer:
+    left: '<span class="rf-footer-brand"><span class="rf-logo-circle"><img src="/images/crow-logo.png" class="rf-footer-logo" alt=""></span><span>R Foundations: Core Skills for Data Science</span></span>'
+    right: '&copy; 2026 &nbsp;&nbsp;|&nbsp;&nbsp; Built with [Quarto](https://quarto.org)'
+
+format:
+  html:
+    theme: sandstone
+    css: styles.css
+    toc: true
+    code-copy: true
+    code-overflow: wrap
+    code-line-numbers: false
+    callout-appearance: simple

@@ -1,0 +1,267 @@
+---
+title: "01 Variables as Vectors"
+subtitle: "How does R organize data?"
+---
+
+```{r}
+#| include: false
+
+source("../data/lock5-usstates.R")
+```
+
+## Learning Objectives
+
+After completing this lesson, you should be able to:
+
+- Explain that a **variable** is stored as a **vector** in R.
+- Distinguish between **quantitative** and **categorical** vectors.
+- Explain that multiple vectors together describe the same set of observations.
+- Preview how vectors form the foundation of a data frame.
+
+[Download the companion R guide for this lesson](found01-vectors-companion.R)
+
+-------------------------------------------------
+
+# Introduction
+
+Suppose you collected information about all 50 U.S. states.
+
+For each state, you recorded several variables, such as the region of the country, the percentage of people who eat fruit at least once per day, and the percentage of people who do 150+ minutes of aerobic physical activity per week:
+
+| State      | Region | Fruit (%) | Physical Activity (%) |
+|:-----------|:-------|----------:|----------------------:|
+| Alabama    | S      |      54.2 |                  56.3 |
+| Alaska     | W      |      57.9 |                  65.0 |
+| Arizona    | W      |      58.4 |                  63.1 |
+| Arkansas   | S      |      54.6 |                  52.8 |
+| California | W      |      63.8 |                  62.2 |
+
+In this table, 
+
+- Each **row** represents one observation (a state).
+
+- Each **column** represents one variable.
+
+Although we often view data as a table, R stores each variable separately. A spreadsheet column is essentially a **vector** in R.
+
+In this lesson we'll learn how vectors work and why they are one of the most important data structures in R.
+
+
+-------------------------------------------------
+
+
+# Vector Basics
+
+Let's start with the state names, which are stored in a vector we call `states`. 
+
+::: {.callout-important title="Key Idea"}
+A **vector** stores the values for **one variable**.
+
+
+Suppose we want to preview the state names to see how they are recorded (capital letters? abbreviations?). 
+
+The `head()` command displays only the first few values of an object. This makes it easier to explore larger datasets without printing everything.
+
+```{r}
+# print the first 6 states by default
+head(states)
+
+# or you can choose how many to print
+head(states, n = 8)
+```
+
+
+If we want to see the entire vector instead, we can simply type its name, or use the `print()` command.
+
+```{r}
+states
+```
+
+::: {.callout-tip title="Tip"}
+Remember: R is **case sensitive**, so object names must be typed exactly as they were created. Typically, we recommend sticking with lowercase variable names.
+
+For example,
+
+- states \# correct
+
+- States \# wrong
+:::
+
+-------------------------------------------------
+
+# Quantitative and Categorical Variables
+
+Not every variable contains the same type of information. 
+
+```{r}
+head(region)
+```
+
+```{r}
+head(fruit)
+```
+
+The `region` vector contains **categories** (Northeast, Midwest, South, and West, abbreviated as `NE`, `MW`, `S`, and `W`).
+
+The `fruit` vector contains **numbers** representing the percentage of adults in each state who report eating fruit daily.
+
+From a statistics perspective, recall that we describe variables as:
+
+- **Categorical variables** describe groups or categories.
+- **Quantitative variables** measure numerical quantities.
+
+Knowing which kind of variable you have helps determine the graphs, summaries, and analyses that make sense.
+
+It's also important to verify that R has stored the variable correctly-- sometimes R may accidentally think a quantitative variable is categorical, which can cause lots of confusion if you don't catch it early!
+
+
+::: {.callout-tip title="Looking Ahead"}
+
+**R Data Types**. In this course, we'll often describe variables as categorical or quantitative because those ideas are useful for data analysis.
+
+Internally, R stores values using more specific data types. 
+
+- Categorical variables are often stored as character (text) data. 
+- Quantitative variables are stored as numeric data types, including integer (whole number only) and double (decimal number).
+
+:::
+
+You can check how R stored a variable with `typeof()`.
+
+```{r}
+typeof(region) # character = categorical 
+typeof(fruit) # double = quantitative (with decimals)
+```
+
+There are a few other data types as well, such as logical (TRUE or FALSE). We'll learn more about these data types later. For now, it's enough to recognize that different vectors can store different kinds of values.
+
+-------------------------------------------------
+
+# Vector Length of Parallel Vectors
+
+Every vector in this dataset describes the same 50 states.
+
+That means they should all contain the same number of values. Let's verify that using the `length()` command. 
+
+```{r}
+length(states)
+length(region)
+length(fruit)
+```
+
+Each vector contains 50 values because each contains one value for every state; if one vector had a different length, we would know there was a mistake somewhere.
+
+::: {.callout-important title="Key Idea"}
+
+When several vectors describe the same dataset, they should all have the **same length** because they contain information about the same set of observations.
+
+Each vector stores a different variable, but together they describe the same observations.
+
+:::
+
+::: {.callout-tip title="Try It"}
+
+Use `length()` to verify that the `physical` vector also contains 50 values.
+
+:::
+
+-------------------------------------------------
+
+# Looking Up Individual Observations
+
+Sometimes we want just one value instead of the entire vector.
+
+We can retrieve a value by placing its **position** inside square brackets (`[]`). This is called **indexing**.
+
+For example, suppose we want to know the **9th state** in our dataset.
+
+```{r}
+states[9]
+```
+
+The output tells us that the 9th observation is **Florida**.
+
+Now that we know Florida is in position 9, we can use that same position to look up Florida's values in the other vectors.
+
+```{r}
+states[9]
+region[9]
+physical[9]
+```
+
+
+::: {.callout-important title="Key Idea"}
+
+The **position** identifies the observation.
+
+Position **9** refers to **Florida** in **every** vector, regardless of what information that vector stores.
+
+:::
+
+Notice that since there are 50 states in the vector, we could specify any position from 1 to 50. 
+
+::: {.callout-tip title="Try It"}
+
+Use indexing to answer the following questions.
+
+1. What is the **21st state**?
+2. Which **region** is that state in?
+3. What percentage of adults in that state report eating fruit daily?
+
+Before looking at the example below, write the three commands you would use in your companion R script.
+
+:::
+
+One possible solution is shown below.
+
+```{r}
+states[21]
+region[21]
+fruit[21]
+```
+
+
+::: {.callout-important title="Key Idea"}
+
+Each vector stores a **different variable**, but the **same position** always refers to the **same observation**.
+
+This is why multiple vectors can work together to describe a dataset.
+
+:::
+
+-------------------------------------------------
+
+# Looking Ahead
+
+Working with four vectors is manageable.
+
+Real datasets often contain dozens or hundreds of variables. Rather than keeping track of many separate vectors, R combines them into a **data frame**, which you'll begin using soon.
+
+-------------------------------------------------
+
+# Lesson Summary
+
+By the end of this lesson, you should understand that:
+
+- A vector stores one variable.
+- Vectors can be categorical or quantitative.
+- Related vectors should have the same length.
+- The same position refers to the same observation in every vector.
+- Square brackets (`[]`) retrieve individual observations.
+
+-------------------------------------------------
+
+# R Reference
+
+| Function | Purpose |
+|----------|---------|
+| `head(x)` | Display the first few values |
+| `length(x)` | Count the number of values |
+| `typeof(x)` | Show how R stores a vector |
+
+For a vector named `my_vector`, you can use the following syntax:
+
+| Syntax | Purpose |
+|--------|---------|
+| `my_vector` | Display or print the entire vector |
+| `my_vector[n]` | Retrieve the value in position `n` |

@@ -1,0 +1,38 @@
+---
+title: "R Foundations"
+---
+
+## Core Skills for Data Science
+
+Welcome!
+
+This site contains the pre-class lessons for the **R Foundations** module in our *R for Data Science* course.
+
+These lessons are designed to help you learn the basic ideas of R before class so that our class meetings can focus on solving problems with data rather than introducing new syntax.
+
+Each lesson should take about **10–20 minutes** to complete (hopefully).
+
+### How to use these lessons
+
+For each lesson:
+
+1.  Read the explanations.
+2.  Predict what each code example will do **before** running it.
+3.  Run the code in RStudio.
+4.  Compare your prediction with the output.
+5.  Complete your guided notes and Canvas quiz before class.
+
+Programming is learned by experimenting. Don't worry if your first prediction is wrong—that is part of the learning process.
+
+------------------------------------------------------------------------
+
+### Lessons
+
+- [01 Variables as Vectors](lessons/found01-vectors.qmd)
+- [02 Creating Useful Vectors](lessons/found02-create-vectors.qmd)
+- [03 Selecting Observations](lessons/found03-select-observations.qmd)
+- [04 Understanding Missing Values](lessons/found04-missing-values.qmd)
+- [05 Summarizing a Variable](lessons/found05-summarize-variable.qmd)
+
+------------------------------------------------------------------------
+

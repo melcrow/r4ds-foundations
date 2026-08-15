@@ -1,0 +1,196 @@
+---
+title: "Lesson 2: Creating Vectors"
+---
+
+## Introduction
+
+In the previous lesson, you learned that a **vector** is one of the most important data structures in R. A vector stores multiple values of the same type in a single object.
+
+Now we'll learn several easy ways to create vectors. Each method is useful in a different situation.
+
+By the end of this lesson, you'll be able to:
+
+- create vectors by typing values
+- create sequences of numbers
+- repeat values
+- combine pieces of text into labels
+
+[Download the companion R guide for this lesson](found02-create-vectors-companion.R)
+
+-------------------------------------------------
+
+## Creating a vector with `c()`
+
+The simplest way to create a vector is with the **combine** function, `c()`.
+
+```{r}
+se_states <- c("Florida", "Georgia", "Alabama")
+```
+
+This creates a character vector containing three state names.
+
+You can also create vectors of numbers.
+
+```{r}
+se_populations <- c(21.93, 10.82, 5.05)
+```
+
+::: {.callout-note title="Key Idea"}
+`c()` simply combines multiple values into a single vector. Notice that every element must be the same data type-- if you try to combine different data types, you can get unexpected results!
+:::
+
+-------------------------------------------------
+
+## Creating sequences
+
+Typing every number is fine for short vectors.
+
+```{r}
+state_nums <- c(1, 2, 3, 4, 5)
+state_nums
+```
+
+But R has easier ways to create sequences.
+
+The colon operator creates consecutive integers.
+
+```{r}
+state_nums <- 1:5
+state_nums
+```
+
+You can also count backwards.
+
+```{r}
+10:1
+```
+
+If you need more control, use `seq()`.
+
+```{r}
+seq(from = 0, to = 20, by = 5)
+```
+
+Unlike `:`, `seq()` lets you choose the starting value, ending value, and spacing.
+
+::: {.callout-note title="Key Idea"}
+Use `:` for simple consecutive integers.
+
+Use `seq()` whenever you need more flexibility.
+:::
+
+-------------------------------------------------
+
+## Repeating values
+
+Sometimes you need the same value several times. But if you are lazy like me, you don't want to have to keep typing it (plus the more times you type something, the more likely you are to make a typo!)
+
+For example, suppose several states all belong to the same region.
+
+```{r}
+# Oops! Spot the typo...
+se_regions <- c("S", "S", "s")
+se_regions
+```
+
+
+It would be easier if we could have R repeat the region for us.
+
+```{r}
+se_regions <- rep("S", times = 3)
+se_regions
+```
+
+You can also repeat an entire pattern. 
+
+```{r}
+rep(c("A", "B"), times = 3)
+```
+
+The rep() function is flexible with more options that you can explore in the companion code script. 
+
+
+::: {.callout-tip title="Predict"}
+Without running the code, what do you think this produces?
+
+```{r}
+rep(c("orange", "blue"), each = 2, times = 3)
+```
+:::
+
+-------------------------------------------------
+
+## Building labels with `paste()`
+
+Often we want to combine existing values into readable labels.
+
+Suppose we already have a vector of numbers.
+
+```{r}
+state_nums <- 1:5
+```
+
+We can create labels using `paste()`.
+
+```{r}
+paste("State", state_nums)
+```
+
+
+We can also combine multiple vectors.
+
+```{r}
+states <- c("Florida", "Georgia", "Alabama")
+regions <- rep("South", times = 3)
+
+paste(states, "-", regions)
+```
+
+
+::: {.callout-note title="Key Idea"}
+`paste()` builds new text by combining existing pieces together.
+:::
+
+-------------------------------------------------
+
+## Try It
+
+Open the companion R script and work through today's examples.
+
+As you work, don't just run the code—try to predict what each line will produce before you execute it.
+
+In the final section, you'll investigate several examples that combine these functions in new ways.
+
+-------------------------------------------------
+
+## Looking Ahead
+
+Today we created vectors by hand.
+
+Soon you'll begin importing datasets into R. Every column in a dataset is stored as a vector, so the tools you learned today will continue to be useful throughout the course.
+
+-------------------------------------------------
+
+## Lesson Summary
+
+Today you learned five common ways to build vectors.
+
+| If you want to...           | Use...    |
+|-----------------------------|-----------|
+| Combine several values      | `c()`     |
+| Create consecutive integers | `:`       |
+| Create flexible sequences   | `seq()`   |
+| Repeat values or patterns   | `rep()`   |
+| Build text labels           | `paste()` |
+
+-------------------------------------------------
+
+## R Reference
+
+| Function  | Purpose                                   |
+|-----------|-------------------------------------------|
+| `c()`     | Combine values into a vector              |
+| `:`       | Create consecutive integers               |
+| `seq()`   | Create a sequence with flexible spacing   |
+| `rep()`   | Repeat values or patterns                 |
+| `paste()` | Combine text and other values into labels |

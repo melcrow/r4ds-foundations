@@ -1,0 +1,475 @@
+/* ===========================================================
+   R Foundations Theme
+   Custom styling for Quarto + Sandstone
+   =========================================================== */
+
+
+/* ===========================================================
+   DESIGN TOKENS
+   =========================================================== */
+
+:root {
+  /* Primary branding */
+  --rf-deep: #0B2E50;          /* headings, active navigation */
+
+  /* Accent colors */
+  --rf-teal: #4F7F78;          /* links, subtle accents */
+  --rf-teal-bright: #2F8F9D;   /* interactive emphasis, TOC, hover */
+  --rf-teal-light: #DCEAE6;    /* callout and subtle background accents */
+
+  /* Neutral palette */
+  --rf-page: #F8F5EF;
+  --rf-content: #FFFDF9;
+  --rf-text: #30363A;
+  --rf-muted: #667176;
+  --rf-border: #D7DDD9;
+
+  /* Warning palette */
+  --rf-amber: #A56F2A;
+  --rf-amber-light: #F5EAD8;
+
+  /* Bootstrap primary override */
+  --bs-primary: var(--rf-teal-bright);
+  
+  /* ---------- Lesson callout colors ---------- */
+  --rf-key: #FFFDD0 
+  --rf-key-border: #C6A63A;
+
+  --rf-predict: #E8F2FB;
+  --rf-predict-border: #5B8DBA;
+
+  --rf-try: #E8F4E8;
+  --rf-try-border: #5E8D68;
+
+  --rf-warning: #FEE9C8;
+  --rf-warning-border: #B57A30;
+
+  --rf-ahead: #F0ECFA;
+  --rf-ahead-border: #8B72C7;
+}
+
+
+/* ===========================================================
+   PAGE LAYOUT
+   =========================================================== */
+
+body {
+  background-color: var(--rf-page);
+  color: var(--rf-text);
+  line-height: 1.65;
+}
+
+main.content {
+  max-width: 900px;
+  background-color: var(--rf-content);
+  padding: 2rem 2.4rem;
+  border-radius: 0.55rem;
+}
+
+
+/* ===========================================================
+   TYPOGRAPHY
+   =========================================================== */
+
+h1,
+h2,
+h3 {
+  color: var(--rf-deep);
+}
+
+h1 {
+  font-weight: 650;
+}
+
+h2 {
+  margin-top: 2rem;
+  padding-bottom: 0.2rem;
+  border-bottom: 1px solid var(--rf-border);
+}
+
+h3 {
+  margin-top: 1.5rem;
+}
+
+
+/* ===========================================================
+   LINKS
+   =========================================================== */
+
+a {
+  color: var(--rf-teal);
+}
+
+a:hover {
+  color: var(--rf-teal-bright);
+}
+
+
+/* ===========================================================
+   LEFT SIDEBAR
+   =========================================================== */
+
+#quarto-sidebar {
+  background-color: #E7EFEC;
+  border-right: 1px solid #CDD9D5;
+}
+
+.sidebar-title {
+  color: var(--rf-deep);
+  font-weight: 700;
+}
+
+.sidebar-item-text {
+  color: #334744;
+}
+
+
+/* Active page */
+
+.sidebar-item .active {
+  background-color: var(--rf-deep);
+  color: white !important;
+  border-radius: 0.35rem;
+
+  padding: 0.35rem 0.55rem;
+  margin-left: 0.15rem;
+  margin-right: 0.15rem;
+}
+
+.sidebar-item .active .menu-text {
+  color: white !important;
+}
+
+
+/* Hover */
+
+.sidebar-item-container:hover {
+  background-color: rgba(79, 127, 120, 0.10);
+  border-radius: 0.35rem;
+}
+
+
+/* ===========================================================
+   RIGHT-SIDE TABLE OF CONTENTS
+   =========================================================== */
+
+#TOC {
+  font-size: 0.92rem;
+}
+
+#TOC a {
+  color: var(--rf-teal);
+}
+
+
+/* Active section */
+
+#quarto-margin-sidebar .nav-link.active,
+#TOC .nav-link.active {
+  color: var(--rf-teal-bright) !important;
+  border-left-color: var(--rf-teal-bright) !important;
+  font-weight: 600;
+}
+
+
+/* Hover */
+
+#quarto-margin-sidebar .nav-link:hover,
+#TOC .nav-link:hover {
+  color: var(--rf-teal-bright) !important;
+}
+
+
+/* ===========================================================
+   CODE
+   =========================================================== */
+
+
+/* Inline code */
+
+code {
+  color: var(--rf-deep);
+}
+
+
+/* Code chunks */
+
+div.sourceCode {
+  background-color: #F2F5F4;
+  border: 1px solid var(--rf-border);
+  border-radius: 0.45rem;
+}
+
+
+/* Console / chunk output */
+
+.cell-output {
+  background-color: #FAF8F3;
+  border-left: 3px solid #BBC9C5;
+
+  padding-left: 0.85rem;
+
+  margin-top: 0.35rem;
+  margin-bottom: 1rem;
+}
+
+.cell-output pre {
+  margin-bottom: 0;
+}
+
+
+/* ===========================================================
+   TABLES
+   =========================================================== */
+
+table {
+  background-color: white;
+}
+
+.table > :not(caption) > * > * {
+  border-color: var(--rf-border);
+}
+
+.callout {
+  border-radius: 0.5rem;
+  margin-top: 1.3rem;
+  margin-bottom: 1.3rem;
+}
+
+.callout .callout-header {
+  font-weight: 650;
+}
+/* =========================================================
+   LESSON CALLOUTS
+   ========================================================= */
+
+.callout {
+  border-radius: 0.55rem;
+  margin-top: 1.3rem;
+  margin-bottom: 1.3rem;
+}
+
+.callout .callout-header {
+  font-weight: 650;
+}
+
+
+/* ---------------------------------------------------------
+   KEY IDEA
+   Quarto type: important
+   --------------------------------------------------------- */
+
+.callout-important {
+  border-left-color: var(--rf-key-border) !important;
+}
+
+.callout-important > .callout-header {
+  background-color: var(--rf-key) !important;
+  color: var(--rf-deep) !important;
+}
+
+.callout-important .callout-icon-container {
+  color: var(--rf-key-border) !important;
+}
+
+
+/* ---------------------------------------------------------
+   PREDICT
+   Quarto type: note
+   --------------------------------------------------------- */
+
+.callout-note {
+  border-left-color: var(--rf-predict-border) !important;
+}
+
+.callout-note > .callout-header {
+  background-color: var(--rf-predict) !important;
+  color: var(--rf-deep) !important;
+}
+
+.callout-note .callout-icon-container {
+  color: var(--rf-predict-border) !important;
+}
+
+
+/* ---------------------------------------------------------
+   TRY IT
+   Quarto type: tip
+   --------------------------------------------------------- */
+
+.callout-tip {
+  border-left-color: var(--rf-try-border) !important;
+}
+
+.callout-tip > .callout-header {
+  background-color: var(--rf-try) !important;
+  color: var(--rf-deep) !important;
+}
+
+.callout-tip .callout-icon-container {
+  color: var(--rf-try-border) !important;
+}
+
+
+/* ---------------------------------------------------------
+   COMMON MISTAKE
+   Quarto type: warning
+   --------------------------------------------------------- */
+
+.callout-warning {
+  border-left-color: var(--rf-warning-border) !important;
+}
+
+.callout-warning > .callout-header {
+  background-color: var(--rf-warning) !important;
+  color: var(--rf-deep) !important;
+}
+
+.callout-warning .callout-icon-container {
+  color: var(--rf-warning-border) !important;
+}
+
+
+/* ---------------------------------------------------------
+   LOOKING AHEAD
+   Quarto type: caution
+   --------------------------------------------------------- */
+
+.callout-caution {
+  border-left-color: var(--rf-ahead-border) !important;
+}
+
+.callout-caution > .callout-header {
+  background-color: var(--rf-ahead) !important;
+  color: var(--rf-deep) !important;
+}
+
+.callout-caution .callout-icon-container {
+  color: var(--rf-ahead-border) !important;
+}
+
+
+
+
+/* ===========================================================
+   BLOCKQUOTES
+   =========================================================== */
+
+blockquote {
+  color: #4D575B;
+  border-left-color: var(--rf-teal);
+}
+
+
+/* ===========================================================
+   HORIZONTAL RULES
+   =========================================================== */
+
+hr {
+  border-color: var(--rf-border);
+}
+
+
+/* ===========================================================
+   FOOTER
+   =========================================================== */
+
+.nav-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  border-top: 1px solid var(--rf-border);
+
+  color: var(--rf-muted);
+  font-size: 0.9rem;
+
+  padding-top: 0.9rem;
+  padding-bottom: 0.9rem;
+}
+
+
+/* Align left and right footer regions */
+
+.nav-footer-left,
+.nav-footer-right {
+  display: flex;
+  align-items: center;
+}
+
+.nav-footer-right {
+  justify-content: flex-end;
+  text-align: right;
+}
+
+
+/* Footer links */
+
+.nav-footer a {
+  color: var(--rf-teal);
+  text-decoration: none;
+}
+
+.nav-footer a:hover {
+  color: var(--rf-teal-bright);
+}
+
+
+/* Footer branding */
+
+.rf-footer-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.7rem;
+
+  font-weight: 600;
+  color: var(--rf-deep);
+}
+
+
+/* Circular frame around the crow logo */
+
+.rf-logo-circle {
+  width: 58px;
+  height: 58px;
+  flex: 0 0 58px;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: var(--rf-content);
+
+  border: 2px solid var(--rf-teal);
+  border-radius: 50%;
+
+  overflow: hidden;
+}
+
+
+/* Enlarge the crow independently of the circle */
+
+.rf-footer-logo {
+  width: 82px;
+  height: 82px;
+
+  max-width: none;
+  object-fit: contain;
+}
+
+
+/* ===========================================================
+   RESPONSIVE / SMALL SCREENS
+   =========================================================== */
+
+@media (max-width: 768px) {
+
+  main.content {
+    padding: 1.3rem;
+    border-radius: 0;
+  }
+
+  .nav-footer {
+    gap: 1rem;
+  }
+}
