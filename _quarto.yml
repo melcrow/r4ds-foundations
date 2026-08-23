@@ -3,6 +3,7 @@ project:
   output-dir: docs
   resources:
     - lessons/*.R
+    - data/*
   render:
     - index.qmd
     - lessons/*.qmd
